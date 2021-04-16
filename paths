@@ -1,0 +1,17 @@
+#! /usr/bin/env zsh
+
+#                 _   _
+#     _ __   __ _| |_| |__  ___
+#    | '_ \ / _` | __| '_ \/ __|
+#   _| |_) | (_| | |_| | | \__ \
+#  (_) .__/ \__,_|\__|_| |_|___/
+#    |_|
+
+#   PATH variables
+#   -------------------------------------------------------------------
+
+
+set PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/timw/bin:/home/timw/.githubcli/bin:/home/timw/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/timw/.antigen/bundles/MichaelAquilina/zsh-autoswitch-virtualenv:/home/timw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/asdf:/home/timw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colored-man-pages:/home/timw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colorize:/home/timw/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/frontend-search:/home/timw/.antigen/bundles/lukechilds/zsh-better-npm-completion:/home/timw/.antigen/bundles/lukechilds/zsh-nvm:/home/timw/.antigen/bundles/zsh-users/zsh-syntax-highlighting
+
+
+# eos
