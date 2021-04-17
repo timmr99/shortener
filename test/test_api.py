@@ -1,11 +1,6 @@
-import sys
-import os
-
-print('path: {}'.format(sys.path))
-CURR_DIR = os.path.dirname(os.path.realpath(__file__))
-print('curdir: {}'.format(CURR_DIR))
-
 import pytest
+
+import os
 
 import requests
 
@@ -15,6 +10,9 @@ from shortener_app.utils import *
 def flask_url():
     return 'http://127.0.0.1:5000/'
 
+@pytest.fixture
+def file_location():
+    return 'shortened.json'
 
 def test_default_url(flask_url):
     response = requests.get(flask_url)
@@ -35,6 +33,7 @@ def test_encode_url(flask_url):
     expected = flask_url + 'AEY3dXZNHm76Sbzu6oENjw'
     assert expected == response.text
 
+
 def test_encode_url2(flask_url):
     test_url = flask_url + '/url=http://yahoo.com'
     response = requests.post(test_url)
@@ -45,5 +44,11 @@ def test_encode_url2(flask_url):
 def test_decode_url(flask_url):
     test_url = flask_url + 'AEY3dXZNHm76Sbzu6oENjw'
     response = requests.get(test_url)
-    print('{}'.format(response.text))
-    assert True == False
+    expected = 'http://google.com'
+    assert expected == response.text
+
+
+# run this test after one of the encode tests have run
+def test_for_file(file_location):
+    assert os.path.isfile(file_location)
+

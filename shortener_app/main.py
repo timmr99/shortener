@@ -26,10 +26,20 @@ def i_am_alive():
 def current_version():
     return '0.0.1'
 
+# handle encode url id
 @app.route('/<id>', methods=['GET'])
 def expand(id):
-    return ('expand {}'.format(id))
+        db = get_database(db_name)
 
+        url = db.get(id)
+        if url == None:
+            resp = make_response('Did not find {}'.format(id),404)
+            return resp
+
+        return ('{}'.format(url))
+
+
+# encode specified url to base62
 @app.route('/url=<path:url>', methods=['POST'])
 def shorten(url):
     if url == 'url=':
@@ -39,18 +49,18 @@ def shorten(url):
     else:
         db = get_database(db_name)
 
+        # do the encoding
         short = shortuuid.uuid(name=url)
 
-        print('before: {}'.format(db))
+        # if the short id exists, write to the database
         if db.get(short) == None:
             db[short] = url
             write_database(db_name, db)
 
+        # if the url isn't in the database, put it there
         if db.get(url) == None:
             db[url] = short
             write_database(db_name, db)
-
-        print('after: {}'.format(db))
 
         return (base_url + '{}'.format(short))
 

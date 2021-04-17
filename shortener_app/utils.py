@@ -1,8 +1,10 @@
 import os
 import json
 
-
+# open the file with the specified access and return the handle if the file exists
+# return None if it doesn't
 def get_file(file_name, access='r'):
+    handle = None
     if os.path.isfile(file_name):
         # exists
         handle = open(file_name,access)
@@ -31,7 +33,7 @@ def get_database(file_name):
     return db
 
 
-# write the 'contents' to the file_name as json
+# write the 'contents' to the file_name as json, overwrite the file
 def write_database(file_name, contents):
 
     handle = get_file(file_name, 'w')
